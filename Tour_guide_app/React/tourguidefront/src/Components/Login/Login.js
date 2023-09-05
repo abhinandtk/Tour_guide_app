@@ -17,7 +17,20 @@ export default function Login() {
     console.log(input);
     axios.post('http://127.0.0.1:8000/api/UserLogin',input).then((response)=>{
     console.log(response.data.data);
-    localStorage.setItem('data',JSON.stringify(response.data.data.role))
+    toast.success('Login Successfully', {
+      position: "top-center",
+      autoClose: 5000,
+      hideProgressBar: false,
+      closeOnClick: true,
+      pauseOnHover: true,
+      draggable: true,
+      progress: undefined,
+      theme: "colored",
+      });
+
+setInterval(set,800)
+function set(){
+  localStorage.setItem('data',JSON.stringify(response.data.data.role))
     localStorage.setItem('userdata',JSON.stringify(response.data.data))
     if(response.data.data.role=='User'){
       navigate('/')
@@ -27,6 +40,12 @@ export default function Login() {
       navigate('/')
     }
 
+
+}
+
+
+
+    
     
 
   }).catch((error=>{
@@ -48,7 +67,7 @@ export default function Login() {
     <>
     <Nav></Nav>
     <div className="square">
-      <ToastContainer></ToastContainer>
+    <ToastContainer></ToastContainer>
       <h5 className='text-center pt-5'>Welcome, Please Enter Your Details</h5>
       <h5 className=' text-center  w-75 p-2 google'>Login with google</h5>
       <div className="inputbox">

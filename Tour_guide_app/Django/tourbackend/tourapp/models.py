@@ -21,4 +21,9 @@ class Product(models.Model):
     Rating=models.CharField(max_length=30)
     Price=models.CharField(max_length=30)
     Description=models.CharField(max_length=30)
+class Contactus(models.Model):
+     Name=models.CharField(max_length=30)
+     Email=models.CharField(max_length=30)
+     Phonenum=models.CharField(max_length=30)
+
 

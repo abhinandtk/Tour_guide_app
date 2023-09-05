@@ -1,6 +1,6 @@
 # from django.shortcuts import render
 # from django.shortcuts import render,redirect
-from .serializers import LoginUserSerializer,UserRegisterSerializer,ProductSerializer
+from .serializers import LoginUserSerializer,UserRegisterSerializer,ProductSerializer,ContactSerializer
 from rest_framework.generics import GenericAPIView
 from rest_framework.response import Response
 from rest_framework import status
@@ -140,6 +140,13 @@ class Getsingleproduct(GenericAPIView):
     def get(self,request,id):
         products=Product.objects.filter(pk=id).values()
         return Response({'data':products,'message':'single product data','success':True},status=status.HTTP_200_OK)
+class Contact(GenericAPIView):
+    serializer_class=ContactSerializer
+    def post(self,request):
+        Name=request.data.get('Name')
+        Email=request.data.get('Email')
+        Contact=request.data.get('Contact')
+        serializer=self.serializer_class(data:{})
 
 
 
