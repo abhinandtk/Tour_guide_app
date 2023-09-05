@@ -1,0 +1,12 @@
+
+a , .a{
+    font-family: 'DM Sans', sans-serif;
+}
+.navbar{
+    padding: 11px !important;
+    border-bottom: 0.1pc rgb(212, 208, 208) solid;
+    text-align: center !important;
+    background-color: black;
+
+
+}

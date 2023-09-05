@@ -1,0 +1,37 @@
+.square{
+    max-width: 400px;
+    height: 500px;
+    margin: 30px auto;
+    background-color: white;
+    border-radius: 10px;
+    border: 1px black solid;
+ 
+}
+.inputbox  > input[type=text] {
+   border-top-style: none;
+   border-right-style: none;
+   border-left-style: none;
+   border-bottom: 1px black solid;
+}
+
+
+.inputbox{
+    display: flex;
+    flex-direction: column;
+    width: 80%;
+    margin: 0 auto;
+
+}
+.inputbox > input[type=button] {
+    background-color: black;
+    border-radius: 5px;
+
+}
+.google{
+    border: 1px black solid;
+    margin:50px auto 0 auto;
+    border-radius: 5px;
+}
+.inputbox > ::placeholder{
+    color: black !important;
+}

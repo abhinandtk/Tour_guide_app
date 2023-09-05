@@ -1,0 +1,18 @@
+.width{
+    margin-top: 50px;
+    width: 400px;
+    background-color: black;
+    color: white;
+    padding: 30px;
+    border-radius: 10px;
+}
+.width > h6{
+  margin-bottom: 20px;
+}
+.cont{
+   display: flex;
+   justify-content: space-evenly;
+   flex-wrap: wrap;
+   padding: 30px;
+   
+}
