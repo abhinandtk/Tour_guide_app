@@ -140,13 +140,24 @@ class Getsingleproduct(GenericAPIView):
     def get(self,request,id):
         products=Product.objects.filter(pk=id).values()
         return Response({'data':products,'message':'single product data','success':True},status=status.HTTP_200_OK)
-class Contact(GenericAPIView):
-    serializer_class=ContactSerializer
-    def post(self,request):
-        Name=request.data.get('Name')
-        Email=request.data.get('Email')
-        Contact=request.data.get('Contact')
-        serializer=self.serializer_class(data:{})
+# class Contact(GenericAPIView):
+#     serializer_class=ContactSerializer
+#     def post(self,request):
+#         Name=request.data.get('Name')
+#         Email=request.data.get('Email')
+#         Contact=request.data.get('Contact')
+#         serializer=self.serializer_class(data:{})
+
+class UpdateRegister(GenericAPIView):
+    def put(self,request,id):
+        Register=Registerdata.objects.get(pk=id)
+        serializer=UserRegisterSerializer(instance=Register,data=request.data,partial=True)
+        if serializer.is_valid():
+          serializer.save()
+          return Response({'data':serializer.data,'message':'product updated successfully','success':True},status=status.HTTP_200_OK)
+        else:
+            return Response({'data':serializer.error,'message':'Update Failed','success':False},status=status.HTTP_400_BAD_REQUEST)
+
 
 
 

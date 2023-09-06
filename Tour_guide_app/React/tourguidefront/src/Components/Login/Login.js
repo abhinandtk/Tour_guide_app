@@ -31,7 +31,7 @@ export default function Login() {
 setInterval(set,800)
 function set(){
   localStorage.setItem('data',JSON.stringify(response.data.data.role))
-    localStorage.setItem('userdata',JSON.stringify(response.data.data))
+    localStorage.setItem('userid',JSON.stringify(response.data.data.user_id))
     if(response.data.data.role=='User'){
       navigate('/')
       

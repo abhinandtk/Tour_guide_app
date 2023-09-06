@@ -11,4 +11,5 @@ urlpatterns = [
     path("Deleteproduct/<int:id>",views.Deleteproduct.as_view(),name='Deleteproduct'),
     path("Update_product/<int:id>",views.Update_product.as_view(),name='Update_product'),
     path("Getsingleproduct/<int:id>",views.Getsingleproduct.as_view(),name='Getsingleproduct'),
+    path("UpdateRegister/<int:id>",views.UpdateRegister.as_view(),name='UpdateRegister'),
 ]
