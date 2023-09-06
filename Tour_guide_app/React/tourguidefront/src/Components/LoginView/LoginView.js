@@ -25,7 +25,7 @@ export default function LoginView() {
 <div className="width">
       <h6>Logid:{item.Log_id} </h6>
       <h6>User status: {item.User_status}</h6>
-      <h6>User Id: {item.User_id}</h6>
+      <h6>User Id: {item.id}</h6>
       <h6>Name: {item.Name}</h6>
       <h6>Contact: {item.Contact}</h6>
       <h6>Email: {item.Email}</h6>

@@ -157,6 +157,11 @@ class UpdateRegister(GenericAPIView):
           return Response({'data':serializer.data,'message':'product updated successfully','success':True},status=status.HTTP_200_OK)
         else:
             return Response({'data':serializer.error,'message':'Update Failed','success':False},status=status.HTTP_400_BAD_REQUEST)
+class GetsingleRegister(GenericAPIView):
+    def get(self,request,id):
+        Register=Registerdata.objects.filter(pk=id).values()
+        return Response({'data':Register,'message':'single product data','success':True},status=status.HTTP_200_OK)
+
 
 
 
