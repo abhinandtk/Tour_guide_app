@@ -88,10 +88,10 @@ export default function Profile() {
         </div>
         <div className="secprofibox">
             <h2 className='ml-4 mt-2'>Edit profile</h2>
-            <img src={shelby} alt="" />
+            <img src={`${values.Image}`}style={{width:'20px',height:'40px'}} alt="" />
             
               <div className="formbox">
-              <h5>User_id d: {values.id}</h5>  
+              <h5>User_id : {values.id}</h5>  
               <h5>Name: {values.Name}</h5>
               <h5>Contact: {values.Contact}</h5>
               <h5>Email: {values.Email}</h5>  

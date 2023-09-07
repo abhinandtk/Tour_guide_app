@@ -13,4 +13,6 @@ urlpatterns = [
     path("Getsingleproduct/<int:id>",views.Getsingleproduct.as_view(),name='Getsingleproduct'),
     path("UpdateRegister/<int:id>",views.UpdateRegister.as_view(),name='UpdateRegister'),
     path("GetsingleRegister/<int:id>",views.GetsingleRegister.as_view(),name='GetsingleRegister'),
+    path("ContactAdd",views.ContactAdd.as_view(),name='ContactAdd'),
+    path("Getallcontact",views.Getallcontact.as_view(),name='Getallcontact'),
 ]

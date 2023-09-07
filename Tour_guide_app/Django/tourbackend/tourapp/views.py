@@ -4,7 +4,7 @@ from .serializers import LoginUserSerializer,UserRegisterSerializer,ProductSeria
 from rest_framework.generics import GenericAPIView
 from rest_framework.response import Response
 from rest_framework import status
-from .models import Logindata,Registerdata,Product
+from .models import Logindata,Registerdata,Product,Contactus
 
 # Create your views here.
 class UserRegister(GenericAPIView):
@@ -17,6 +17,7 @@ class UserRegister(GenericAPIView):
         email=request.data.get('Email')
         username=request.data.get('Username')
         password=request.data.get('Password')
+        Image=request.data.get('Image')
         role='User'
         user_status='0'
         if(Logindata.objects.filter(Username=username)):
@@ -28,7 +29,7 @@ class UserRegister(GenericAPIView):
             log=serializer_login.save()
             log_id=log.id
             print(log_id)
-        serializer=self.serializer_class(data={'Name':name,'Contact':contact,'Email':email,'User_status':user_status,'Log_id':log_id})
+        serializer=self.serializer_class(data={'Name':name,'Contact':contact,'Email':email,'User_status':user_status,'Log_id':log_id,'Image':Image})
         print(serializer)
         if serializer.is_valid():
             print('hi')
@@ -140,13 +141,27 @@ class Getsingleproduct(GenericAPIView):
     def get(self,request,id):
         products=Product.objects.filter(pk=id).values()
         return Response({'data':products,'message':'single product data','success':True},status=status.HTTP_200_OK)
-# class Contact(GenericAPIView):
-#     serializer_class=ContactSerializer
-#     def post(self,request):
-#         Name=request.data.get('Name')
-#         Email=request.data.get('Email')
-#         Contact=request.data.get('Contact')
-#         serializer=self.serializer_class(data:{})
+class ContactAdd(GenericAPIView):
+    serializer_class=ContactSerializer
+    def post(self,request):
+        Name=request.data.get('Name')
+        Email=request.data.get('Email')
+        Contact=request.data.get('Contact')
+        serializer=self.serializer_class(data={'Name':Name,'Email':Email,'Contact':Contact})
+        if serializer.is_valid():
+            serializer.save()
+            return Response({'data':serializer.data,'message':'Contact Registered Successfully','success':True},status=status.HTTP_201_CREATED)
+        return Response({'data':serializer.errors,'message':'Failed','success':False},status=status.HTTP_400_BAD_REQUEST)
+class Getallcontact(GenericAPIView):
+    serializer_class=ContactSerializer
+    def get(self,request):
+        datas=Contactus.objects.all()
+        if(datas.count()>0):
+            serializer=ContactSerializer(datas,many=True)
+            return Response({'data':serializer.data,'message':'all product set','success':True},status=status.HTTP_200_OK)
+        else:
+            return Response({'data':[],'message':'no product available','success':False},status=status.HTTP_201_CREATED)
+
 
 class UpdateRegister(GenericAPIView):
     def put(self,request,id):
@@ -160,7 +175,7 @@ class UpdateRegister(GenericAPIView):
 class GetsingleRegister(GenericAPIView):
     def get(self,request,id):
         Register=Registerdata.objects.filter(pk=id).values()
-        return Response({'data':Register,'message':'single product data','success':True},status=status.HTTP_200_OK)
+        return Response({'data':Register,'message':'single user data','success':True},status=status.HTTP_200_OK)
 
 
 

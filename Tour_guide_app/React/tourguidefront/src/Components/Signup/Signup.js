@@ -41,7 +41,7 @@ export default function Signup() {
                     <input type="text" class="form-control" id="exampleInputPassword1" placeholder="Username" name='Username' onChange={inputChange}></input>
                   </div>
                   <div class="form-group">
-                    <input type="file" class="form-control" id="exampleInputPassword1" placeholder="File" name='File' onChange={(e)=>{setState({...state,'file':e.target.files})}}></input>
+                    <input type="file" class="form-control" id="exampleInputPassword1" placeholder="Image" name='Image' onChange={(e)=>{setState({...state,'file':e.target.files})}}></input>
                   </div>
                   <div class="form-group">
                     <input type="password" class="form-control" id="exampleInputPassword1" placeholder="Password" name='Password' onChange={inputChange}></input>

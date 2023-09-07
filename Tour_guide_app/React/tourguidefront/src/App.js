@@ -9,6 +9,7 @@ import LoginView from './Components/LoginView/LoginView';
 import Home from './Components/AdminHome/Home';
 import Profile from './Components/Profile/Profile';
 import Edit from './Components/Edit/Edit';
+import Contactusview from './Components/Contactusview/Contactusview';
 
 function App() {
   return (
@@ -24,6 +25,7 @@ function App() {
       <Route path='/LoginView' element={<LoginView></LoginView>}></Route>
       <Route path='/Profile' element={<Profile></Profile>}></Route>
       <Route path='/Edit/:id' element={<Edit></Edit>}></Route>
+      <Route path='/Contactusview' element={<Contactusview></Contactusview>}></Route>
     </Routes>
     </BrowserRouter>
     </>

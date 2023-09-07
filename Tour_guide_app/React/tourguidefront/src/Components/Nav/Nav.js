@@ -35,20 +35,19 @@ export default function Nav() {
                 <a class="nav-link text-white b" href='/'>Admin Home <span class="sr-only">(current)</span></a>
               </li>
               <li class="nav-item">
-                <a class="nav-link text-white b" href='/Add'>Add</a>
+                <a class="nav-link text-white b" href='/Add'>Add Product</a>
               </li>
               <li class="nav-item">
-                <a class="nav-link text-white b" href="/View">View</a>
+                <a class="nav-link text-white b" href="/View">View Product</a>
               </li>
               <li class="nav-item">
-                <a class="nav-link text-white b" href="/#contact">Contact us</a>
+                <a class="nav-link text-white b" href="/LoginView">Login View</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link text-white b" href="/Contactusview">Contactus View</a>
               </li>
               <li class="nav-item">
                 <a class="nav-link text-white b"   onClick={logout}>Logout</a>
-              </li>
-
-              <li class="nav-item">
-                <a class="nav-link text-white b" href="/LoginView">LoginView</a>
               </li>
             </ul>
           </div>

@@ -57,6 +57,7 @@ i{
 }
 .i1{
     background-color: black;
+    color: white;
     border-left: 0 ;
     border-right: 0;
     border-top: 0;
@@ -80,6 +81,9 @@ i{
     font-family: 'Bebas Neue', sans-serif;
     font-family: 'DM Sans', sans-serif;
     font-family: 'Edu SA Beginner', cursive;
+}
+.new >input[type=text]{
+    color: white;
 }
 
 

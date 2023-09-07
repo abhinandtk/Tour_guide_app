@@ -29,6 +29,7 @@ export default function LoginView() {
       <h6>Name: {item.Name}</h6>
       <h6>Contact: {item.Contact}</h6>
       <h6>Email: {item.Email}</h6>
+      <img src={`${item.Image}`}style={{width:'20px',height:'40px'}} alt="" />
     </div> 
         ))}
     </div>
