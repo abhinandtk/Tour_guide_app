@@ -15,4 +15,5 @@ urlpatterns = [
     path("GetsingleRegister/<int:id>",views.GetsingleRegister.as_view(),name='GetsingleRegister'),
     path("ContactAdd",views.ContactAdd.as_view(),name='ContactAdd'),
     path("Getallcontact",views.Getallcontact.as_view(),name='Getallcontact'),
+    path("Getsinglecontact/<int:id>",views.Getsinglecontact.as_view(),name='Getsinglecontact'),
 ]

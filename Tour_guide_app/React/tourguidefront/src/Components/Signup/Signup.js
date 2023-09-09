@@ -10,9 +10,17 @@ export default function Signup() {
         setState({...state,[name]:value})
 
     }
-    const submit=()=>{
+    const submit=(e)=>{
+      // e.preventDefault()
      console.log(state);
-     axios.post('http://127.0.0.1:8000/api/UserRegister',state).then((response)=>{
+     const data=new FormData()
+     data.append('Name',state.name)
+     data.append('Email',state.Email)
+     data.append('Contact',state.Contact)
+     data.append('Username',state.Username)
+     data.append('Image',state.Image)
+     data.append('Password',state.Password)
+     axios.post('http://127.0.0.1:8000/api/UserRegister',data).then((response)=>{
         console.log(response);
      }).catch((error)=>{
         console.log(error);
@@ -35,13 +43,13 @@ export default function Signup() {
                     <input type="text" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Email" name='Email' onChange={inputChange}></input>
                   </div>
                   <div class="form-group">
-                    <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Contact" name='Contact' onChange={inputChange}></input>
+                    <input type="tel" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Contact" name='Contact' onChange={inputChange}></input>
                   </div>
                   <div class="form-group">
                     <input type="text" class="form-control" id="exampleInputPassword1" placeholder="Username" name='Username' onChange={inputChange}></input>
                   </div>
                   <div class="form-group">
-                    <input type="file" class="form-control" id="exampleInputPassword1" placeholder="Image" name='Image' onChange={(e)=>{setState({...state,'file':e.target.files})}}></input>
+                    <input type="file" class="form-control" id="exampleInputPassword1" placeholder="Image" name='Image' onChange={(e)=>{console.log(e.target.files[0]);setState({...state,'Image':e.target.files});}}></input>
                   </div>
                   <div class="form-group">
                     <input type="password" class="form-control" id="exampleInputPassword1" placeholder="Password" name='Password' onChange={inputChange}></input>
@@ -50,7 +58,7 @@ export default function Signup() {
                     <input type="checkbox" class="form-check-input" id="exampleCheck1"></input>
                     <label class="form-check-label" for="exampleCheck1">Check me out</label>
                   </div>
-                  <button type="submit" class="btn btn-primary w-100" onClick={submit}>Submit</button>
+                  <button type="button" class="btn btn-primary w-100" onClick={submit}>Submit</button>
                 </form>
 
             </div>
