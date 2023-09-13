@@ -16,4 +16,5 @@ urlpatterns = [
     path("ContactAdd",views.ContactAdd.as_view(),name='ContactAdd'),
     path("Getallcontact",views.Getallcontact.as_view(),name='Getallcontact'),
     path("Getsinglecontact/<int:id>",views.Getsinglecontact.as_view(),name='Getsinglecontact'),
+    path("Replymessage",views.Replymessage.as_view(),name='Replymessage'),
 ]

@@ -44,7 +44,7 @@ export default function Nav() {
                 <a class="nav-link text-white b" href="/LoginView">Login View</a>
               </li>
               <li class="nav-item">
-                <a class="nav-link text-white b" href="/Contactusview">Contactus View</a>
+                <a class="nav-link text-white b" href="/Contactusview" >Contactus View</a>
               </li>
               <li class="nav-item">
                 <a class="nav-link text-white b"   onClick={logout}>Logout</a>

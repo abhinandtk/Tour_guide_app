@@ -14,7 +14,7 @@ export default function Signup() {
       // e.preventDefault()
      console.log(state);
      const data=new FormData()
-     data.append('Name',state.name)
+     data.append('Name',state.Name)
      data.append('Email',state.Email)
      data.append('Contact',state.Contact)
      data.append('Username',state.Username)

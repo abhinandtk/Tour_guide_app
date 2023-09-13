@@ -17,7 +17,7 @@ export default function Login() {
     console.log(input);
     axios.post('http://127.0.0.1:8000/api/UserLogin',input).then((response)=>{
     console.log(response.data.data);
-    toast.success('Login Successfully', {
+    toast('Login Successfully', {
       position: "top-center",
       autoClose: 5000,
       hideProgressBar: false,
@@ -28,15 +28,15 @@ export default function Login() {
       theme: "colored",
       });
 
-setInterval(set,800)
+setInterval(set,1000)
 function set(){
   localStorage.setItem('data',JSON.stringify(response.data.data.role))
     localStorage.setItem('userid',JSON.stringify(response.data.data.user_id))
-    if(response.data.data.role=='User'){
+    if(response.data.data.role==='User'){
       navigate('/')
       
     }
-    else if(response.data.data.role=='Admin'){
+    else if(response.data.data.role==='Admin'){
       navigate('/')
     }
 

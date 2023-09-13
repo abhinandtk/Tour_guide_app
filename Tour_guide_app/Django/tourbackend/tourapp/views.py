@@ -5,6 +5,7 @@ from rest_framework.generics import GenericAPIView
 from rest_framework.response import Response
 from rest_framework import status
 from .models import Logindata,Registerdata,Product,Contactus
+from .mail import sendmail
 
 # Create your views here.
 class UserRegister(GenericAPIView):
@@ -182,6 +183,16 @@ class Getsinglecontact(GenericAPIView):
     def get(self,request,id):
         contact=Contactus.objects.filter(pk=id).values()
         return Response({'data':contact,'message':'single product contact','success':True},status=status.HTTP_200_OK)
+    
+class Replymessage(GenericAPIView):
+    def post(self,request):
+        Reply=request.data.get('Reply')
+        Name=request.data.get('Name')
+        Contact=request.data.get('Contact')
+        Email=request.data.get('Email')
+        sendmail(Email,Reply)
+        return Response({'data':{'Reply':Reply,'Name':Name,'Contact':Contact,'Email':Email},'message':'Contact Registered Successfully','success':True},status=status.HTTP_201_CREATED)
+
 
 
 
