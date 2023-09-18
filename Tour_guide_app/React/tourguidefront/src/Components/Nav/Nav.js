@@ -3,16 +3,20 @@ import './Nav.css'
 import { useNavigate } from 'react-router-dom'
 
 
-export default function Nav() {
+export default function Nav(props) {
+  console.log(props.Navfunc);
   const Navigate=useNavigate()
   const role = JSON.parse(localStorage.getItem('data'))
-  // console.log(role);
+  console.log(role);
+
+
   const logout=()=>{
+
     localStorage.removeItem('data')
     Navigate('/Login')
     
 
-    
+   
   }
 
 
@@ -47,7 +51,7 @@ export default function Nav() {
                 <a class="nav-link text-white b" href="/Contactusview" >Contactus View</a>
               </li>
               <li class="nav-item">
-                <a class="nav-link text-white b"   onClick={logout}>Logout</a>
+                <a class="nav-link text-white b"  onClick={logout}>Logout</a>
               </li>
             </ul>
           </div>
@@ -75,7 +79,7 @@ export default function Nav() {
                   <a class="nav-link text-white b" href="/Profile">Profile</a>
                 </li>
                 <li class="nav-item">
-                  <a class="nav-link text-white b" href="/#contact">Contact us</a>
+                  <a class="nav-link text-white b" onClick={()=>{props.Navfunc()}} href='#contact'>Contact us</a>
                 </li>
                 <li class="nav-item">
                   <a class="nav-link text-white b" onClick={logout}>Log out</a>

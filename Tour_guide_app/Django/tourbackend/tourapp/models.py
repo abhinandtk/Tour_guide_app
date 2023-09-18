@@ -29,5 +29,6 @@ class Contactus(models.Model):
      Name=models.CharField(max_length=30)
      Email=models.CharField(max_length=30)
      Contact=models.CharField(max_length=30)
+     Status=models.CharField(max_length=30)
 
 

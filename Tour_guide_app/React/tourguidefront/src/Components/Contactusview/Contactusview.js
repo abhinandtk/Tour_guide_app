@@ -16,9 +16,10 @@ export default function Contactusview() {
       console.log(error);
     })
   },[])
+
   const passid=(value)=>{
     console.log(value);
-    axios.get(`http://127.0.0.1:8000/api/Getsinglecontact/${value}`).then((response)=>{
+    axios.get(`http://127.0.0.1:8000/api/Getsinglecontact/${value}`,input).then((response)=>{
       console.log(response.data.data[0]);
       setInput(response.data.data[0])
 
@@ -31,28 +32,35 @@ export default function Contactusview() {
     setInput({...input,[name]:value})
 
   }
-  const send = ()=>{
-    console.log(input);
-    axios.post('http://127.0.0.1:8000/api/Replymessage',input).then((response)=>{
+  const send = (value)=>{
+    axios.post(`http://127.0.0.1:8000/api/UpdateContactstatus/${value}`,{Email:input.Email},{Reply:input.Reply}).then((response)=>{
+      
       console.log(response);
+      window.location.reload()
+
       toast('Message sent successfully!', {
-        position: "top-right",
-        autoClose: 5000,
-        hideProgressBar: false,
-        closeOnClick: true,
-        pauseOnHover: true,
-        draggable: true,
-        progress: undefined,
-        theme: "light",
-        });
-       
-        
+    position: "top-right",
+    autoClose: 5000,
+    hideProgressBar: false,
+    closeOnClick: true,
+    pauseOnHover: true,
+    draggable: true,
+    progress: undefined,
+    theme: "light",
+    });
+  
     }).catch((error)=>{
       console.log(error);
     })
+    console.log(input);
+  
+       
+        
+    
 
 
   }
+
 
 
   return (
@@ -94,7 +102,7 @@ export default function Contactusview() {
 </form>
       </div>
       <div class="modal-footer">
-        <button type="button" class="btn btn-primary" onClick={send}>Send</button>
+        <button type="button" class="btn btn-primary" onClick={()=>{send(input.id)}}>Send</button>
       </div>
     </div>
   </div>
@@ -110,7 +118,13 @@ export default function Contactusview() {
     <h5 >Name:{item.Name}</h5>
     <h5 >Contact:{item.Contact}</h5>
     <h5 >Email:{item.Email}</h5>
-    <button onClick={()=>{passid(item.id)}} type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal">Respond</button>   
+    {item.Status==="1" ?
+        <button  type="button" class="btn btn-primary bg-success" >Replied</button> 
+        :
+        <button onClick={()=>{passid(item.id)}} type="button" class="btn btn-primary " data-toggle="modal" data-target="#exampleModal">Respond</button> 
+
+
+    }
   </div>
 
     ))}

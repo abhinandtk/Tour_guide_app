@@ -148,7 +148,8 @@ class ContactAdd(GenericAPIView):
         Name=request.data.get('Name')
         Email=request.data.get('Email')
         Contact=request.data.get('Contact')
-        serializer=self.serializer_class(data={'Name':Name,'Email':Email,'Contact':Contact})
+        Status="0"
+        serializer=self.serializer_class(data={'Name':Name,'Email':Email,'Contact':Contact,'Status':Status})
         if serializer.is_valid():
             serializer.save()
             return Response({'data':serializer.data,'message':'Contact Registered Successfully','success':True},status=status.HTTP_201_CREATED)
@@ -183,15 +184,20 @@ class Getsinglecontact(GenericAPIView):
     def get(self,request,id):
         contact=Contactus.objects.filter(pk=id).values()
         return Response({'data':contact,'message':'single product contact','success':True},status=status.HTTP_200_OK)
-    
-class Replymessage(GenericAPIView):
-    def post(self,request):
+        
+class UpdateContactstatus(GenericAPIView):
+    def post(self,request,id):
         Reply=request.data.get('Reply')
-        Name=request.data.get('Name')
-        Contact=request.data.get('Contact')
         Email=request.data.get('Email')
         sendmail(Email,Reply)
-        return Response({'data':{'Reply':Reply,'Name':Name,'Contact':Contact,'Email':Email},'message':'Contact Registered Successfully','success':True},status=status.HTTP_201_CREATED)
+        Register=Contactus.objects.get(pk=id)
+        serializer=ContactSerializer(instance=Register,data=request.data,partial=True)
+        if serializer.is_valid():
+          Register.Status="1"
+          serializer.save()
+          return Response({'data':serializer.data,'message':'contact updated successfully','success':True},status=status.HTTP_200_OK)
+        else:
+            return Response({'data':serializer.error,'message':'Update Failed','success':False},status=status.HTTP_400_BAD_REQUEST)
 
 
 

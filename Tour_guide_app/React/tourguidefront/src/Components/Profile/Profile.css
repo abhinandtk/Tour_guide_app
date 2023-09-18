@@ -1,6 +1,9 @@
 .profbox{
     display: flex;
     height: 100vh;
+    margin-bottom: 50px !important;
+    border-bottom: 1px black solid;
+
 }
 .profirstbox{
     width: 350px;

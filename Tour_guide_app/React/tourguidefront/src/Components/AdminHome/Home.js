@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react'
+import React, { useEffect, useState } from 'react'
 import './Home.css'
 import Nav from '../Nav/Nav'
 import axios from 'axios'
@@ -7,18 +7,23 @@ import Contactpage from '../Contactpage/Contactpage'
 export default function Home() {
   const role=JSON.parse(localStorage.getItem('data'))
   console.log(role);
+  const [state,setState]=useState(false)
  
+const Navcontent=(value)=>{
+  console.log(value);
+  setState(true)
 
 
+}
 
-      
+
 
   
   return (
     <>
     <div class="container-fluid onee">
       <div class="container second">
-        <Nav></Nav>
+        <Nav Navfunc={Navcontent}></Nav>
         <div class="container">
           <div class="row">
             <div class="col-4">
@@ -41,7 +46,7 @@ export default function Home() {
         </div>
       </div>
     </div>
-    {role=='User'  ?
+    {role=='User' && state==true ?
     <Contactpage></Contactpage>
 
   

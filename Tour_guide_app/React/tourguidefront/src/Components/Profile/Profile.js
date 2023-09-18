@@ -4,9 +4,11 @@ import Nav from '../Nav/Nav'
 import shelby from './Images/thomasshelby.jpg'
 import axios from 'axios'
 import { ToastContainer, toast } from 'react-toastify'
+import Contactpage from '../Contactpage/Contactpage'
 
 
 export default function Profile() {
+  const [nav,setNav]=useState(false)
   const [input,setInput]=useState(false)
   const [values ,setValues]=useState("")
   const[update,setUpdate]=useState({})
@@ -30,6 +32,12 @@ export default function Profile() {
     console.log(update);
 
 
+  }
+  const Navcontent=(value)=>{
+    console.log(value);
+    setNav(true)
+  
+  
   }
 
   const submit=()=>{
@@ -62,7 +70,7 @@ export default function Profile() {
   console.log(values);
   return (
     <>
-    <Nav></Nav>
+    <Nav Navfunc={Navcontent}></Nav>
     <div className="profbox">
         <div className="profirstbox">
           <ToastContainer></ToastContainer>
@@ -98,6 +106,14 @@ export default function Profile() {
             </div>  
           </div>
     </div>
+  
+    {nav==true ?
+    <Contactpage></Contactpage>
+    :
+    <none></none>
+    }
+    
+
     
     </>
   )
