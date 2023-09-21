@@ -6,14 +6,22 @@ import axios from 'axios'
 export default function LoginView() {
     const [state,setState] = useState([])
     useEffect(()=>{
-        axios.get('http://127.0.0.1:8000/api/Getalldata').then((response)=>{
-            setState(response.data.data)
-            console.log(response.data.data);
-
-        }).catch((error) => {
-            console.error('Error fetching data:', error);
-          })
+      axios.get('http://127.0.0.1:8000/api/Getalldata').then((response)=>{
+        console.log(response);
+        setState(response.data.data)
+      }).catch((error)=>{
+        console.log(error);
+      })
     },[])
+ 
+
+    const deletemethod=(val)=>{
+      axios.delete(`http://127.0.0.1:8000/api/Deleteuser/${val}`).then((response)=>{
+        console.log(response);
+      }).catch((error)=>{
+        console.log(error);
+      })
+    }
     console.log(state);
 
   return (
@@ -29,7 +37,8 @@ export default function LoginView() {
       <h6>Name: {item.Name}</h6>
       <h6>Contact: {item.Contact}</h6>
       <h6>Email: {item.Email}</h6>
-      <img src={`${item.Image}`}style={{width:'20px',height:'40px'}} alt="" />
+      <img src={`Django/tourbackend/${item.Image}`} className='card-img'  alt="" />
+      <input type="button" value='Delete' onClick={()=>{deletemethod(item.Log_id)}} />
     </div> 
         ))}
     </div>

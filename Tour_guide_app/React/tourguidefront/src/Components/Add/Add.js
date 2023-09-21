@@ -15,7 +15,18 @@ export default function Add() {
   }
   const submit=()=>{
     console.log(state);
-    axios.post('http://127.0.0.1:8000/api/ProductAdd',state).then((response)=>{
+    const data=new FormData()
+    data.append('Country',state.Country)
+    data.append('State',state.State)
+    data.append('City',state.City)
+    data.append('Category',state.Category)
+    data.append('Placename',state.Placename)
+    data.append('Location',state.Location)
+    data.append('Rating',state.Rating)
+    data.append('Price',state.Price)
+    data.append('Image',state.Image)
+    data.append('Description',state.Description)
+    axios.post('http://127.0.0.1:8000/api/ProductAdd',data).then((response)=>{
       console.log(response.data.message);
       toast.success(response.data.message, {
         position: "top-center",
@@ -78,6 +89,10 @@ export default function Add() {
                 <div class="form-group col-md-6">
                   <label for="inputEmail4">Price</label>
                   <input type="text" class="form-control" id="inputEmail4" name='Price' onChange={inputChange}></input>
+                </div>
+                <div class="form-group col-md-4">
+                  <label for="inputEmail4">Image</label>
+                  <input type="file" class="form-control" id="inputEmail4" name='Image' onChange={(e)=>{inputState({...state,'Image':e.target.files[0]})}}></input>
                 </div>
               </div>
               <div class="form-group">

@@ -96,7 +96,7 @@ export default function Profile() {
         </div>
         <div className="secprofibox">
             <h2 className='ml-4 mt-2'>Edit profile</h2>
-            <img src={`${values.Image}`}style={{width:'20px',height:'40px'}} alt="" />
+            <img src={`Django/tourbackend/media/${values.Image}`}  alt="" />
             
               <div className="formbox">
               <h5>User_id : {values.id}</h5>  

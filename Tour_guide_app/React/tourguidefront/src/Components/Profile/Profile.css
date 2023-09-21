@@ -28,9 +28,9 @@ i{
 
 .secprofibox > img{
     width: 150px;
-    margin-left: 150px;
+    margin-left: 40px;
     margin-top: 40px;
-    border-radius: 50%;
+    border-radius: 10%;
 }
 .formbox{
     margin-top: 50px;

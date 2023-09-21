@@ -11,6 +11,7 @@ img{
 .larg{
     background: radial-gradient(circle at 10% 20%, rgb(69, 86, 102) 0%, rgb(34, 34, 34) 90%);
     padding-bottom: 30px;
+    padding-top: 30px;
   
 }
 .larrow{
@@ -54,4 +55,9 @@ img{
     margin-left: 80px;
     background-color: khaki;
 
+}
+
+.search{
+    display: flex;
+    justify-content: flex-end;
 }
