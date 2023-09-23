@@ -3,6 +3,7 @@ import './Home.css'
 import Nav from '../Nav/Nav'
 import axios from 'axios'
 import Contactpage from '../Contactpage/Contactpage'
+import {AccessTimeRounded,AccountBalanceRounded}  from '@mui/icons-material';
 
 export default function Home() {
   const role=JSON.parse(localStorage.getItem('data'))
@@ -38,9 +39,11 @@ const Navcontent=(value)=>{
               </p>
             </div>
             <div class="col-1">
+              <div class="col "><AccessTimeRounded/></div>
               <div class="col "><i class="bi bi-twitter"></i></div>
               <div class="col pt-5"><i class="bi bi-whatsapp"></i></div>
               <div class="col pt-5"><i class="bi bi-instagram"></i></div>
+              
             </div>
           </div>
         </div>

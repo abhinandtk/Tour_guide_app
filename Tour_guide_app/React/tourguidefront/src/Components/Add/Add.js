@@ -44,6 +44,7 @@ export default function Add() {
 
   }
 
+
   return (
     <>
     <Nav></Nav>
@@ -52,7 +53,7 @@ export default function Add() {
   <div class="row mt-5 cent">
     <div class="col-8">
     <div class="row twoo">
-        <form class="formm">
+        <form class="formm" onSubmit={submit}>
             <div class="form-row">
               <div class="form-group col-md-6">
                 <label for="inputEmail4">Country</label>
@@ -99,7 +100,7 @@ export default function Add() {
                 <label for="inputAddress">Description</label>
                 <input type="text" class="form-control" id="inputPassword4" name='Description' onChange={inputChange}></input>
             </div>
-            <button type="button" class="btn btn-primary" onClick={submit}>Sign in</button>
+            <button type="submit" class="btn btn-primary" >Sign in</button>
           </form>
 
     </div>
