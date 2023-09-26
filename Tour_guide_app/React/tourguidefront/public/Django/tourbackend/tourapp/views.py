@@ -108,10 +108,10 @@ class ProductAdd(GenericAPIView):
         Placename=request.data.get('Placename')
         Location=request.data.get('Location')
         Rating=request.data.get('Rating')
-        Price=request.data.get('Price')
+        price=request.data.get('Price')
         Image=request.data.get('Image')
         Description=request.data.get('Description')
-        serializer=self.serializer_class(data={'Country':Country,'State':State,'City':City,'Category':Category,'Placename':Placename,'Location':Location,'Rating':Rating,'Price':Price,'Description':Description,'Image':Image})
+        serializer=self.serializer_class(data={'Country':Country,'State':State,'City':City,'Category':Category,'Placename':Placename,'Location':Location,'Rating':Rating,'Price':price,'Description':Description,'Image':Image})
         if serializer.is_valid():
             serializer.save()
             return Response({'data':serializer.data,'message':'Product Registered Successfully','success':True},status=status.HTTP_201_CREATED)

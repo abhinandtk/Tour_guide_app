@@ -65,7 +65,7 @@ const editmethod=(val)=>{
       <div className="dmbox">
         <div class=" larrow pt-5">
           <div class="co">
-            {searchmap[0] ?
+            { searchmap[0] ?
              <>
              {searchmap?.map((item,key)=>(
               <div class="card">

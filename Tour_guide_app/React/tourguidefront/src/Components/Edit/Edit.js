@@ -9,13 +9,16 @@ import Nav from '../Nav/Nav';
 
 export default function Edit() {
   const [state,setState] =useState({})
-  const [input,setInput] =useState({})
+  console.log(state);
+  const [input, setInput] = useState({});
+  
     const {id}=useParams()
     console.log(id);
     useEffect(()=>{
       axios.get(`http://127.0.0.1:8000/api/Getsingleproduct/${id}`).then((response)=>{
         console.log(response.data.data[0]);
       setState(response.data.data[0])
+      setInput(response.data.data[0])
       }).catch((error)=>{
         console.log(error);
       })
@@ -27,15 +30,26 @@ export default function Edit() {
 
     }
     const submit=()=>{
+      const data=new FormData()
+      data.append('Country',input.Country)
+      data.append('State',input.State)
+      data.append('City',input.City)
+      data.append('Category',input.Category)
+      data.append('Placename',input.Placename)
+      data.append('Location',input.Location)
+      data.append('Rating',input.Rating)
+      data.append('Price',input.Price)
+      data.append('Image',input.Image)
+      data.append('Description',input.Description)
       console.log(input);
-      axios.put(`http://127.0.0.1:8000/api/Update_product/${id}`,input).then((response)=>{
+      axios.put(`http://127.0.0.1:8000/api/Update_product/${id}`,data).then((response)=>{
         console.log(response);
       }).catch((error)=>{
         console.log(error);
       })
 
     }
-    console.log(state.Country);
+    console.log(input);
    
     
     
@@ -47,7 +61,7 @@ export default function Edit() {
   <div class="form-row">
     <div class="col-md-6 mb-3">
       <label for="validationDefault01">Country</label>
-      <input type="text" class="form-control" id="validationDefault01" name='Country' onChange={Change} defaultValue={state.Country} required></input>
+      <input type="text" class="form-control" id="validationDefault01" name='Country' onChange={Change} value={state.Country} required></input>
     </div>
     <div class="col-md-6 mb-3">
       <label for="validationDefault02">State</label>
@@ -65,13 +79,17 @@ export default function Edit() {
     </div>
   </div>
   <div class="form-row">
-    <div class="col-md-6 mb-3">
+    <div class="col-md-12 mb-3">
       <label for="validationDefault01">Placename</label>
       <input type="text" class="form-control" id="validationDefault01" name='Placename'  onChange={Change} defaultValue={state.Placename} required></input>
     </div>
     <div class="col-md-6 mb-3">
       <label for="validationDefault02">Price</label>
       <input type="text" class="form-control" id="validationDefault02" name='Price'  onChange={Change} defaultValue={state.Price} required></input>
+    </div>
+    <div class="col-md-6 mb-3">
+      <label for="validationDefault01">Image</label>
+      <input type="file" class="form-control" id="validationDefault01" name='Image'  onChange={(e)=>{console.log(e.target.files[0]);setInput({...input,'Image':e.target.files[0]})}} defaultValue={state.Placename} required></input>
     </div>
   </div>
   <div class="form-row">
